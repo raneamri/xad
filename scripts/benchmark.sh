@@ -14,6 +14,7 @@
 # - benchmark_results.md, a table of the results
 # - benchmark.json, the benchmark results as JSON, useful for plotting
 
+
 if [ "$#" -lt 3 ]; then
   echo "Usage: $0 <run_type: 'benchmark' | 'reference'> [<local: bool=false>] <test1> [<test2> ... <testN>]"
   echo "run_type: 'reference' or 'benchmark'"
