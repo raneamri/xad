@@ -26,6 +26,7 @@ LOCAL=$2
 shift 2
 tests=("$@")
 
+# validate mode
 if [ "$RUN_TYPE" != "reference" ] && [ "$RUN_TYPE" != "benchmark" ]; then
   echo "Error: run_type must be either 'reference' or 'benchmark'."
   exit 1
@@ -33,6 +34,7 @@ fi
 
 echo "$(pwd) is current directory"
 
+# make sure directory structure is correct
 if [ ! -d "../main" ]; then
     echo "Reference repo not found. You must have the main repo checked out at ../main to run the benchmarks locally."
     exit 0
@@ -86,7 +88,7 @@ for TEST_NAME in "${tests[@]}"; do
 
     ./$BIN_NAME --benchmark_out="$FILE_OUT_NAME" --benchmark_out_format=$FORMAT
 
-    # Append to combined file and remove the individual file
+    # append to combined file and remove the individual file
     if [ $COMMA_NEEDED -eq 1 ]; then
         echo "," >> "$COMBINED_FILE"
     fi
