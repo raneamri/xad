@@ -101,5 +101,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: benchmark-results
-          path: $(pwd)/xad/build/benchmarks/benchmark_results.md
+          path: $(pwd)/build/benchmarks/benchmark_results.md
           
