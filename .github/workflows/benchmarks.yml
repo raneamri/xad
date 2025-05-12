@@ -102,4 +102,3 @@ jobs:
         with:
           name: benchmark-results
           path: $(pwd)/xad/build/benchmarks/benchmark_results.md
-          
