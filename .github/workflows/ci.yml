@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: setup
         run: |
-          choco install -y ninja sccache
+          choco install -y ninja sccache eigen
       - name: ccache
         if: ${{ matrix.sccache == 'true' }}
         uses: hendrikmuhs/ccache-action@v1.2.10
@@ -177,7 +177,7 @@ jobs:
       - name: Setup tools
         run: |
           apt-get update
-          apt-get install -y ccache ninja-build lcov
+          apt-get install -y ccache ninja-build lcov libeigen3-dev
       - name: GitHub WS Tmp
         # there is an issue with workspace locations in github inside containers, which this works around
         # see: https://github.com/actions/runner/issues/2058
@@ -307,7 +307,7 @@ jobs:
       - name: setup
         run: |
           apt-get update
-          apt-get install -y ccache ninja-build
+          apt-get install -y ccache ninja-build libeigen3-dev
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.10
         with:
@@ -405,7 +405,7 @@ jobs:
       - name: setup
         run: |
           brew update
-          brew install ninja ccache
+          brew install ninja ccache eigen
       - name: setup coverage
         if: ${{ matrix.coverage }}
         # needs to be lcov1.14 specifically and brew no longer supports version selection
