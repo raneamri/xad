@@ -360,7 +360,7 @@ jobs:
       matrix:
         config: [Release, Debug]
         os: [macos-13, macos-latest]
-        compiler: [default, clang15]
+        compiler: [default, clang15, clang17]
         standard: [c++11, c++17]
         memory: ["default", "lowmem"]
         include:
