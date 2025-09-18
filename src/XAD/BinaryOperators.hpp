@@ -77,6 +77,13 @@ XAD_INLINE auto smooth_min(const T1& x, const T2& y) -> decltype(0.5 * (x + y - 
     return 0.5 * (x + y - smooth_abs(x - y));
 }
 
+#if defined(__APPLE__) && defined(__clang__) && defined(__apple_build_version__) &&                \
+    (__apple_build_version__ >= 17000000)
+#ifdef FP_FAST_FMA
+#undef FP_FAST_FMA
+#endif
+#endif
+
 template <class T, class = typename std::enable_if<xad::ExprTraits<T>::isExpr>>
 XAD_INLINE auto fma(const T& a, const T& b, const T& c) -> decltype(a * b + c)
 {
@@ -91,6 +98,7 @@ XAD_INLINE auto fma(const T1& a, const T2& b, const T3& c) -> decltype(a * b + c
 {
     return a * b + c;
 }
+
 
 /////////// comparisons - they just return bool
 
